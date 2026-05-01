@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#031928" />
+  <title>TOA Retreat — Time Off & Awareness</title>
+  <meta name="description" content="Sporturi atipice îmbinate cu dezvoltare personală, în locații exclusiviste. Retreaturi de navigație, teambuildings și charter de bărci în toată lumea." />
+  <link rel="icon" href="assets/logo/TOA_Logomark_Color_Pozitiv.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/fonts/DMSans.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="assets/fonts/ArchitectsDaughter.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Cursor follower (desktop only) -->
+  <div class="cursor" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" aria-label="TOA Retreat">
+      <img src="assets/logo/TOA_LogoFull_Color_Pozitiv.svg" alt="TOA Retreat" />
+    </a>
+    <nav class="nav__menu" aria-label="Meniu principal">
+      <a href="#despre">Despre</a>
+      <a href="#eveniment">Eveniment</a>
+      <a href="#teambuilding">Teambuilding</a>
+      <a href="#charter">Charter</a>
+      <a href="#colaborari">Colaborări</a>
+    </nav>
+    <a class="nav__cta" href="#contact">
+      <span>Contact</span>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <button class="nav__burger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#despre">Despre</a>
+    <a href="#eveniment">Eveniment</a>
+    <a href="#teambuilding">Teambuilding</a>
+    <a href="#charter">Charter</a>
+    <a href="#colaborari">Colaborări</a>
+    <a href="#contact" class="mobile-menu__cta">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero__media">
+      <img src="images/hero-sailing.jpg" alt="Velier pe mare la apus de soare" />
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="dot"></span>
+        <span>Sezon 2026 · Inscrieri deschise</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="line">Sporturi</span>
+        <span class="line"><em>atipice</em>,</span>
+        <span class="line">locatii</span>
+        <span class="line accent">exclusiviste.</span>
+      </h1>
+
+      <p class="hero__lede">
+        TOA — <span class="hand">Time Off &amp; Awareness</span>. Retreaturi în care navigatia, calatoria si dezvoltarea personala se intalnesc, pentru oameni care spun NU rutinei.
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#eveniment">
+          <span>Vezi evenimentul</span>
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#charter">Charter mondial</a>
+      </div>
+
+      <div class="hero__meta">
+        <div>
+          <strong>2</strong>
+          <span>zile pe mare</span>
+        </div>
+        <div>
+          <strong>1</strong>
+          <span>workshop dedicat</span>
+        </div>
+        <div>
+          <strong>∞</strong>
+          <span>locatii internationale</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Navigatie</span><span class="bullet">●</span>
+        <span>Echitatie</span><span class="bullet">●</span>
+        <span>Mindfulness</span><span class="bullet">●</span>
+        <span>Workshop-uri</span><span class="bullet">●</span>
+        <span>Charter mondial</span><span class="bullet">●</span>
+        <span>Teambuildings</span><span class="bullet">●</span>
+        <span>Navigatie</span><span class="bullet">●</span>
+        <span>Echitatie</span><span class="bullet">●</span>
+        <span>Mindfulness</span><span class="bullet">●</span>
+        <span>Workshop-uri</span><span class="bullet">●</span>
+        <span>Charter mondial</span><span class="bullet">●</span>
+        <span>Teambuildings</span><span class="bullet">●</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="despre">
+    <div class="about__grid">
+      <div class="about__head">
+        <span class="eyebrow">01 — Despre TOA</span>
+        <h2 class="display">
+          O pauza de la rutina, <em>scrisa</em> in apa sarata.
+        </h2>
+      </div>
+
+      <div class="about__copy">
+        <p>
+          TOA Retreat reuneste oameni care vor mai mult decat o vacanta: experiente in care sportul atipic devine o forma de cunoastere de sine. Navigam, calarim, exploram, dar in primul rand <strong>ne intalnim cu noi.</strong>
+        </p>
+        <p>
+          Lucram cu skipperi profesionisti, traineri si neurocercetatori, in locatii alese pe sprancena — de la Marea Egee la Marea Adriatica si dincolo. Fiecare retreat e gandit astfel incat sa aduci acasa nu doar amintiri, ci si o perspectiva noua.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Simplu</span>
+          <span class="chip">Modern</span>
+          <span class="chip">Optimist</span>
+          <span class="chip">Playful</span>
+          <span class="chip">Organic</span>
+          <span class="chip">Aspirational</span>
+        </div>
+      </div>
+
+      <div class="about__visual">
+        <img src="images/sunset.jpg" alt="Apus la bordul unui velier" />
+        <div class="about__sticker">
+          <img src="assets/icons/TOA_IconCalm_Galben.svg" alt="" />
+          <span>Calm by design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Event -->
+  <section class="event" id="eveniment">
+    <div class="event__head">
+      <span class="eyebrow">02 — Evenimentul sezonului</span>
+      <h2 class="display">
+        <span>Doua zile pe mare,</span>
+        <em>un workshop care iti schimba ritmul.</em>
+      </h2>
+      <p class="event__lede">
+        Un retreat compact, gandit pentru profesionistii care simt ca au lasat prea mult din ei la birou. Navigam, respiram, vorbim despre burnout — cu uneltele potrivite, langa oamenii potriviti.
+      </p>
+    </div>
+
+    <div class="event__grid">
+      <article class="event__card event__card--day1">
+        <div class="event__card-head">
+          <span class="event__day">Ziua 01</span>
+          <h3>Plecare in larg</h3>
+        </div>
+        <div class="event__card-body">
+          <p>Briefing cu skipperul, ridicam panzele si pornim catre prima ancorare. Pranz la bord, swim stop, navigatie la apus.</p>
+          <ul class="ticks">
+            <li>Briefing tehnic & siguranta</li>
+            <li>Navigatie activa cu skipperul</li>
+            <li>Cina la bord, sub stele</li>
+          </ul>
+        </div>
+        <div class="event__card-art">
+          <img src="assets/icons/TOA_IconTimona_Bleumarin.svg" alt="" />
+        </div>
+      </article>
+
+      <article class="event__card event__card--workshop">
+        <div class="event__card-head">
+          <span class="event__day">Workshop</span>
+          <h3>Burnout, la malul marii</h3>
+        </div>
+        <div class="event__card-body">
+          <p>O sesiune de patru ore, condusa de un specialist in neurostiinte si performanta. Instrumente practice pentru a-ti reseta ritmul, nu doar weekendul.</p>
+          <ul class="ticks">
+            <li>Diagnostic personal de epuizare</li>
+            <li>Tehnici validate stiintific</li>
+            <li>Plan de revenire 30 zile</li>
+          </ul>
+        </div>
+        <div class="event__card-art">
+          <img src="assets/icons/TOA_IconCalm_Bleumarin.svg" alt="" />
+        </div>
+      </article>
+
+      <article class="event__card event__card--day2">
+        <div class="event__card-head">
+          <span class="event__day">Ziua 02</span>
+          <h3>Intoarcerea in port</h3>
+        </div>
+        <div class="event__card-body">
+          <p>Dimineata cu yoga pe punte, urmata de o ultima etapa de navigatie. Inchidem cu un pranz lung, cu vin si cu un cerc de impartasire.</p>
+          <ul class="ticks">
+            <li>Yoga & breathwork pe punte</li>
+            <li>Navigatie partener (poti prelua timona)</li>
+            <li>Pranz de inchidere & sharing circle</li>
+          </ul>
+        </div>
+        <div class="event__card-art">
+          <img src="assets/icons/TOA_IconMunte_Bleumarin.svg" alt="" />
+        </div>
+      </article>
+    </div>
+
+    <div class="event__cta">
+      <div>
+        <span class="eyebrow eyebrow--light">Maxim 8 locuri</span>
+        <p>Cabine duble, all inclusive la bord, transferuri din si catre marina.</p>
+      </div>
+      <a href="#contact" class="btn btn--primary">
+        <span>Rezerva un loc</span>
+        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Teambuilding -->
+  <section class="tb" id="teambuilding">
+    <div class="tb__media">
+      <img src="images/group.jpg" alt="Echipa pe punte" />
+    </div>
+    <div class="tb__content">
+      <span class="eyebrow">03 — Pentru companii</span>
+      <h2 class="display">Teambuilding<br/><em>pe valuri</em>, nu in sala.</h2>
+      <p>
+        Construim retreaturi corporate adaptate echipei tale: de la flote de vele in Croatia, la weekenduri de calarie in nordul Romaniei. Lucram cu HR-ul vostru pe obiective concrete: leadership, comunicare, decizie sub presiune.
+      </p>
+      <ul class="bullets">
+        <li><strong>Flote pana la 60 de persoane</strong> — patru velieri, un program comun.</li>
+        <li><strong>Faciliatori certificati</strong> — coaching, neurostiinte, management.</li>
+        <li><strong>Logistica completa</strong> — zboruri, transferuri, catering, fotograf.</li>
+      </ul>
+      <a href="#contact" class="btn btn--dark">
+        <span>Cere o oferta</span>
+        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Charter -->
+  <section class="charter" id="charter">
+    <div class="charter__head">
+      <span class="eyebrow eyebrow--light">04 — Charter mondial</span>
+      <h2 class="display">Inchiriem barci<br/><em>oriunde</em> bate vantul.</h2>
+      <p>
+        Avem acces la o flota globala de monocoque si catamarane — de la Baleare si Cyclades, pana la British Virgin Islands si Tahiti. Cu sau fara skipper, cu meniu personalizat, pentru grupuri de 4 pana la 12 persoane.
+      </p>
+    </div>
+
+    <div class="charter__map">
+      <div class="charter__pin charter__pin--1">
+        <span class="charter__pin-dot"></span>
+        <div class="charter__pin-card">
+          <strong>Mediterana</strong>
+          <span>Croatia · Grecia · Italia</span>
+        </div>
+      </div>
+      <div class="charter__pin charter__pin--2">
+        <span class="charter__pin-dot"></span>
+        <div class="charter__pin-card">
+          <strong>Caraibe</strong>
+          <span>BVI · Sf. Lucia · Antigua</span>
+        </div>
+      </div>
+      <div class="charter__pin charter__pin--3">
+        <span class="charter__pin-dot"></span>
+        <div class="charter__pin-card">
+          <strong>Pacific</strong>
+          <span>Polinezia · Tahiti</span>
+        </div>
+      </div>
+      <div class="charter__pin charter__pin--4">
+        <span class="charter__pin-dot"></span>
+        <div class="charter__pin-card">
+          <strong>Atlantic</strong>
+          <span>Azore · Madeira · Canare</span>
+        </div>
+      </div>
+      <img src="images/aerial.jpg" alt="Vedere aeriana cu barci pe mare" />
+    </div>
+
+    <div class="charter__grid">
+      <div class="charter__item">
+        <span>01</span>
+        <h3>Spune-ne destinatia</h3>
+        <p>Sau lasa-ne pe noi sa o alegem, in functie de sezon, vant si vibe-ul echipei.</p>
+      </div>
+      <div class="charter__item">
+        <span>02</span>
+        <h3>Alege barca</h3>
+        <p>De la velier sport la catamaran de lux, cu skipper, hostess si chef la bord.</p>
+      </div>
+      <div class="charter__item">
+        <span>03</span>
+        <h3>Te asteptam in port</h3>
+        <p>Cu briefing, provizii, traseu, plan B si linistea ca tu doar te urci la bord.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaborations -->
+  <section class="collab" id="colaborari">
+    <span class="eyebrow">05 — Colaborari</span>
+    <h2 class="display">Lucram cu cei <em>mai buni</em>.</h2>
+    <p class="collab__lede">
+      Selectam atent fiecare partener — de la skipperi cu mii de mile in spate, pana la traineri care fac diferenta intr-o singura sedinta.
+    </p>
+
+    <ul class="collab__list">
+      <li>
+        <span class="collab__role">Skipper · Mediterana</span>
+        <span class="collab__name">Sailing Romania</span>
+      </li>
+      <li>
+        <span class="collab__role">Public speaking</span>
+        <span class="collab__name">Lucian Mindruta</span>
+      </li>
+      <li>
+        <span class="collab__role">Neurostiinte</span>
+        <span class="collab__name">Dr. Mihai Stancu</span>
+      </li>
+      <li>
+        <span class="collab__role">Echitatie</span>
+        <span class="collab__name">Herghelia Lucina</span>
+      </li>
+      <li>
+        <span class="collab__role">Yoga & breathwork</span>
+        <span class="collab__name">The Practice Studio</span>
+      </li>
+      <li>
+        <span class="collab__role">Foto & video</span>
+        <span class="collab__name">Atelier Visual</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- About Us -->
+  <section class="aboutus">
+    <div class="aboutus__inner">
+      <div class="aboutus__visual">
+        <img src="images/deck.jpg" alt="La bord, in timpul unui retreat TOA" />
+        <span class="aboutus__quote">
+          "Spunem NU rutinei, deschidem usi spre perspective noi si generam impact autentic."
+        </span>
+      </div>
+      <div class="aboutus__text">
+        <span class="eyebrow">06 — Despre noi</span>
+        <h2 class="display">TOA s-a nascut <em>dintr-o pauza</em>.</h2>
+        <p>
+          In 2023, Andreea Matache a urcat pe un velier in Croatia fara sa stie ca acea calatorie ii va schimba traiectoria. S-a intors hotarata sa ofere si altora aceeasi tacere, aceeasi claritate.
+        </p>
+        <p>
+          Astazi, TOA Retreat este un colectiv mic, format din skipperi, traineri si oameni de productie, care construiesc retreaturi cu atentia la detaliu a unui ceasornicar — si cu sufletul unui poet.
+        </p>
+        <div class="aboutus__signature">
+          <span class="hand">Andreea Matache</span>
+          <span>Fondator TOA Retreat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <span class="eyebrow eyebrow--light">07 — Contact</span>
+      <h2 class="display contact__title">
+        Gata sa ridicam <em>panzele</em>?
+      </h2>
+      <p class="contact__lede">
+        Scrie-ne pentru rezervari, oferte corporate sau o discutie despre ce ai in minte. Raspundem in cateva ore.
+      </p>
+
+      <div class="contact__grid">
+        <a class="contact__card" href="mailto:toaretreat@gmail.com">
+          <span class="eyebrow eyebrow--light">Email</span>
+          <strong>toaretreat@gmail.com</strong>
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="contact__card" href="tel:+40727089043">
+          <span class="eyebrow eyebrow--light">Telefon</span>
+          <strong>+40 727 089 043</strong>
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="contact__card" href="https://instagram.com/toa.retreat" target="_blank" rel="noopener">
+          <span class="eyebrow eyebrow--light">Social</span>
+          <strong>@toa.retreat</strong>
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/logo/TOA_LogoFull_Color_Negativ.svg" alt="TOA Retreat" />
+        <p>Time Off &amp; Awareness — sporturi atipice imbinate cu dezvoltare personala, in locatii exclusiviste.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <span>Site</span>
+          <a href="#despre">Despre</a>
+          <a href="#eveniment">Eveniment</a>
+          <a href="#teambuilding">Teambuilding</a>
+          <a href="#charter">Charter</a>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:toaretreat@gmail.com">toaretreat@gmail.com</a>
+          <a href="tel:+40727089043">+40 727 089 043</a>
+          <a href="https://instagram.com/toa.retreat" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div>
+          <span>Legal</span>
+          <a href="#">Termeni & conditii</a>
+          <a href="#">Politica de cookies</a>
+          <a href="#">GDPR</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> TOA Retreat. All rights reserved.</span>
+      <span>Crafted with sea salt &amp; intention.</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
