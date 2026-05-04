@@ -605,9 +605,12 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
 .pillar--charter { background: var(--galben); color: var(--ink); }
 .pillar__num {
   font-family: var(--display);
-  font-size: 1.1rem;
+  font-size: clamp(2.6rem, 4.2vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1;
   margin-bottom: auto;
-  opacity: 0.9;
+  opacity: 0.85;
+  letter-spacing: -0.02em;
 }
 .pillar h3 {
   font-family: var(--sans);
