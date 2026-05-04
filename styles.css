@@ -295,6 +295,7 @@ ul { list-style: none; }
 .hero__media {
   position: absolute; inset: 0;
   z-index: -1;
+  background: var(--bej);
 }
 .hero__media video,
 .hero__media img {
