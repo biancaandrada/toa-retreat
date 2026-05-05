@@ -831,6 +831,14 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
   align-items: center;
   padding: var(--pad-y) var(--pad);
 }
+.tb__head {
+  grid-column: 1 / -1;
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: clamp(8px, 2vw, 24px);
+}
+.tb__head .eyebrow { display: inline-flex; }
 .tb__media {
   border-radius: var(--radius-lg);
   overflow: hidden;
