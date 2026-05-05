@@ -3,7 +3,7 @@ const PAGE = document.body.dataset.page || "home";
 const PAGES = [
   { key: "home",   href: "index.html",        label: "Acasă" },
   { key: "despre", href: "despre.html",       label: "Despre" },
-  { key: "event",  href: "eveniment.html",    label: "Eveniment" },
+  { key: "event",  href: "evenimente.html",    label: "Evenimente" },
   { key: "tb",     href: "teambuilding.html", label: "Teambuilding" },
   { key: "charter",href: "charter.html",      label: "Worldwide charter" },
 ];
