@@ -805,6 +805,84 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
 }
 .event__card--day2 .event__card-art { filter: invert(1); opacity: 0.18; }
 
+/* Day-by-day program (event page) */
+.event__days {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.event-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) 1.1fr 1.4fr;
+  gap: clamp(28px, 5vw, 80px);
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.event-row:last-child { border-bottom: 1px solid var(--line); }
+
+.event-row__num {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(6rem, 12vw, 12rem);
+  line-height: 0.85;
+  color: var(--turcoaz);
+}
+
+.event-row__when {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 18px;
+}
+.event-row__title h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.event-row__sub {
+  font-family: var(--display);
+  color: var(--turcoaz);
+  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  display: block;
+  margin-top: 18px;
+}
+.event-row--day2 .event-row__sub { color: var(--ink); }
+.event-row--day3 .event-row__sub { color: var(--galben); }
+
+.event-row__body p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.event-row__list {
+  list-style: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+  padding: 0;
+}
+.event-row__list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.event-row__item-title {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.event-row__item-sub {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
 .event__cta {
   max-width: 1320px;
   margin: 56px auto 0;
@@ -1523,6 +1601,18 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
   .event__lede { justify-self: start; }
   .event__grid { grid-template-columns: 1fr; }
   .event__cta { padding: 28px; }
+
+  .event-row {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "num title"
+      "body body";
+    gap: 24px 28px;
+    padding: 40px 0;
+  }
+  .event-row__num { grid-area: num; font-size: clamp(4.5rem, 16vw, 7rem); }
+  .event-row__title { grid-area: title; align-self: center; }
+  .event-row__body { grid-area: body; }
 
   .tb { grid-template-columns: 1fr; }
   .tb__media { justify-self: stretch; max-width: none; aspect-ratio: 4/3; }
