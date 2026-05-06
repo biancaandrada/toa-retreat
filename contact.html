@@ -98,7 +98,7 @@
         <div class="form__row">
           <div class="form__field">
             <label for="ctelefon">Telefon (opțional)</label>
-            <input id="ctelefon" name="Telefon" type="tel" placeholder="07XX XXX XXX" />
+            <input id="ctelefon" name="Telefon" type="tel" inputmode="tel" pattern="\s*(?:0\s*7(?:\s*\d){8}|\+(?:\s*\d){7,}|0\s*0(?:\s*\d){7})\s*" title="Format acceptat: 07 urmat de 8 cifre (total 10), + urmat de minim 7 cifre, sau 00 urmat de 7 cifre (total 9)." placeholder="07XX XXX XXX" />
           </div>
           <div class="form__field">
             <label for="ctip">Subiect</label>
@@ -127,8 +127,33 @@
     </div>
   </section>
 
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter__inner">
+      <div class="newsletter__head">
+        <span class="eyebrow">Newsletter</span>
+        <h2 class="display">Rămâi în <em>echipaj</em>.</h2>
+        <p class="newsletter__lede">Povești de la mare, anunțuri despre retreaturi noi și locuri pe veliere. Fără spam — câte un email când chiar avem ceva de spus.</p>
+      </div>
+
+      <form class="newsletter__form" data-form data-subject="Newsletter — abonare">
+        <div class="newsletter__row">
+          <input type="email" name="Email" required placeholder="numele.tau@email.com" aria-label="Email" />
+          <button type="submit" class="btn btn--primary newsletter__submit">
+            <span>Mă abonez</span>
+            <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <label class="newsletter__check">
+          <input type="checkbox" name="Acord" required />
+          <span>Sunt de acord să mă abonez la newsletter-ul TOA Retreat și cu prelucrarea adresei mele de email pentru a primi noutăți despre retreaturi și evenimente.</span>
+        </label>
+      </form>
+    </div>
+  </section>
+
   <div id="footer-mount"></div>
 
-  <script src="script.js?v=2026-05-04" defer></script>
+  <script src="script.js?v=2026-05-06c" defer></script>
 </body>
 </html>
