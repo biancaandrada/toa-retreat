@@ -209,7 +209,7 @@
     <div style="max-width: 1100px; margin: 0 auto;">
       <span class="eyebrow eyebrow--light">Înscriere</span>
       <h2 class="display" style="color: var(--bej); margin: 24px 0 16px;">
-        Rezervă-ți <em>locul</em>
+        Rezervă-ți <em>locul</em> acum!
       </h2>
       <p style="color: rgba(253, 249, 237, 0.78); margin-bottom: 48px; max-width: 560px;">
         Completează formularul de mai jos și te contactăm în 24 de ore cu detaliile complete și pasul următor.
@@ -229,7 +229,7 @@
         <div class="form__row">
           <div class="form__field">
             <label for="telefon">Telefon</label>
-            <input id="telefon" name="Telefon" type="tel" required placeholder="07XX XXX XXX" />
+            <input id="telefon" name="Telefon" type="tel" required inputmode="tel" pattern="\s*(?:0\s*7(?:\s*\d){8}|\+(?:\s*\d){7,}|0\s*0(?:\s*\d){7})\s*" title="Format acceptat: 07 urmat de 8 cifre (total 10), + urmat de minim 7 cifre, sau 00 urmat de 7 cifre (total 9)." placeholder="07XX XXX XXX" />
           </div>
           <div class="form__field">
             <label for="locuri">Număr de locuri</label>
@@ -257,6 +257,14 @@
           <input type="checkbox" required />
           <span>Sunt de acord cu prelucrarea datelor mele de contact pentru a primi detalii despre acest retreat.</span>
         </label>
+        <label class="form__check">
+          <input type="checkbox" required />
+          <span>Am citit și sunt de acord cu <a href="gdpr.html" target="_blank" rel="noopener">Politica de Confidențialitate</a>.</span>
+        </label>
+        <label class="form__check">
+          <input type="checkbox" name="Newsletter" />
+          <span>Sunt de acord să mă abonez la newsletterul TOA Retreat.</span>
+        </label>
         <button type="submit" class="btn btn--primary form__submit" style="background: var(--galben); color: var(--ink);">
           <span>Trimite înscrierea</span>
           <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -279,6 +287,6 @@
 
   <div id="footer-mount"></div>
 
-  <script src="script.js?v=2026-05-04" defer></script>
+  <script src="script.js?v=2026-05-06c" defer></script>
 </body>
 </html>
