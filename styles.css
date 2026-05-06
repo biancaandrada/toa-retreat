@@ -570,6 +570,19 @@ ul { list-style: none; }
   color: rgba(253, 249, 237, 0.85);
   font-size: 1.05rem;
 }
+.cta-strip__tagline {
+  margin: clamp(40px, 6vw, 72px) auto 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--bej);
+  letter-spacing: -0.005em;
+}
+.cta-strip__tagline em {
+  font-style: normal;
+  color: var(--rosu);
+}
 
 /* ---------- Sections shared ---------- */
 section { padding: var(--pad-y) var(--pad); position: relative; }
@@ -1270,6 +1283,356 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
   accent-color: var(--turcoaz);
 }
 
+/* ---------- Section background rhythm overrides (teambuilding) ---------- */
+body[data-page="tb"] .event { background: var(--bej-2); }
+body[data-page="tb"] .logistics { background: var(--bej); }
+
+/* Skills now sits on dark navy */
+body[data-page="tb"] .skills {
+  background: var(--bleumarin);
+  color: var(--bej);
+}
+body[data-page="tb"] .skills__eyebrow { color: var(--galben); }
+body[data-page="tb"] .skills__title { color: var(--bej); }
+body[data-page="tb"] .skills__list { border-top-color: rgba(253, 249, 237, 0.16); }
+body[data-page="tb"] .skills__item { border-bottom-color: rgba(253, 249, 237, 0.16); }
+body[data-page="tb"] .skills__num { color: var(--galben); }
+body[data-page="tb"] .skills__name { color: var(--bej); }
+
+/* Charter (Valoare pentru organizație) now sits on light cream */
+body[data-page="tb"] .charter {
+  background: var(--bej-2);
+  color: var(--ink);
+}
+body[data-page="tb"] .charter::before { display: none; }
+body[data-page="tb"] .charter__head .eyebrow { color: var(--ink-soft); }
+body[data-page="tb"] .charter__head .display { color: var(--ink); }
+body[data-page="tb"] .charter__head .display em { color: var(--turcoaz); }
+body[data-page="tb"] .charter__head p { color: var(--ink-soft); }
+body[data-page="tb"] .charter__item {
+  background: var(--bej);
+  border-color: var(--line);
+}
+body[data-page="tb"] .charter__item:hover {
+  background: #fff;
+}
+body[data-page="tb"] .charter__item span { color: var(--turcoaz); }
+body[data-page="tb"] .charter__item h3 { color: var(--ink); }
+body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
+
+/* ---------- Logistică & siguranță (teambuilding) ---------- */
+.logistics {
+  background: var(--bej-2);
+}
+.logistics__head {
+  max-width: 1320px;
+  margin: 0 auto clamp(48px, 6vw, 88px);
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+.logistics__eyebrow {
+  color: var(--turcoaz);
+  letter-spacing: 0.18em;
+  align-self: end;
+  margin-bottom: 10px;
+}
+.logistics__title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.logistics__list {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.logistics__item {
+  display: grid;
+  grid-template-columns: minmax(160px, 240px) 1fr;
+  gap: clamp(24px, 4vw, 80px);
+  padding: clamp(20px, 2.5vw, 28px) 0;
+}
+.logistics__item dt {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--turcoaz);
+  letter-spacing: 0.005em;
+}
+.logistics__item dd {
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.55;
+  max-width: 720px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .logistics__head { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+  .logistics__item { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+}
+
+/* ---------- Competențe dezvoltate (teambuilding) ---------- */
+.skills {
+  background: var(--bej-2);
+}
+.skills__head {
+  max-width: 1320px;
+  margin: 0 auto clamp(48px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+.skills__eyebrow {
+  color: var(--turcoaz);
+  letter-spacing: 0.18em;
+  align-self: end;
+  margin-bottom: 10px;
+}
+.skills__title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.skills__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1320px;
+  border-top: 1px solid var(--line);
+}
+.skills__item {
+  display: grid;
+  grid-template-columns: minmax(80px, 140px) 1fr;
+  gap: clamp(20px, 4vw, 60px);
+  padding: clamp(20px, 2.4vw, 32px) 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.skills__num {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1;
+  color: var(--turcoaz);
+  text-align: center;
+}
+.skills__name {
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+  color: var(--ink);
+  letter-spacing: 0.005em;
+  line-height: 1.15;
+}
+
+@media (max-width: 900px) {
+  .skills__head { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+  .skills__item { grid-template-columns: 70px 1fr; gap: 16px; }
+  .skills__num { font-size: 2rem; text-align: left; }
+}
+
+/* ---------- Format competițional (teambuilding) ---------- */
+.format {
+  background: var(--bleumarin);
+  color: var(--bej);
+}
+.format__head {
+  max-width: 1320px;
+  margin: 0 auto clamp(48px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(40px, 5vw, 96px);
+  align-items: center;
+}
+.format__intro {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.5vw, 32px);
+  align-items: flex-start;
+}
+.format__visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.format__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+}
+.format__sticker {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--galben);
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--ink);
+  max-width: calc(100% - 40px);
+}
+.format__sticker img { width: 20px; height: 20px; flex-shrink: 0; }
+.format__eyebrow {
+  color: var(--galben);
+  letter-spacing: 0.18em;
+}
+
+.format__lede .display {
+  color: var(--bej);
+  margin-bottom: 22px;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height: 1;
+}
+.format__lede .display em {
+  color: var(--galben);
+  font-family: var(--display);
+}
+.format__lede p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: rgba(253, 249, 237, 0.78);
+  max-width: 560px;
+}
+
+.format__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1320px;
+  border-top: 1px solid rgba(253, 249, 237, 0.16);
+}
+.format__step {
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) 1fr;
+  gap: clamp(20px, 4vw, 60px);
+  padding: clamp(28px, 3.5vw, 44px) 0;
+  border-bottom: 1px solid rgba(253, 249, 237, 0.16);
+  align-items: center;
+}
+.format__num {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3.6rem, 6vw, 5.5rem);
+  line-height: 0.85;
+  color: var(--galben);
+  text-align: center;
+}
+.format__body h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.05;
+  color: var(--galben);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+.format__body p {
+  font-size: 0.97rem;
+  color: rgba(253, 249, 237, 0.7);
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+@media (max-width: 900px) {
+  .format__head { grid-template-columns: 1fr; align-items: start; }
+  .format__step { grid-template-columns: 90px 1fr; gap: 18px; }
+  .format__num { font-size: clamp(3rem, 14vw, 4.5rem); text-align: left; }
+}
+
+/* ---------- Teambuilding 3-card row ---------- */
+.tb-cards {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.tb-card {
+  background: var(--bej-2);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3vw, 40px) clamp(24px, 2.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 360px;
+  transition: transform var(--t-med), box-shadow var(--t-med);
+}
+.tb-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+.tb-card--accent { background: var(--turcoaz); color: var(--bej); }
+
+.tb-card__num {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--turcoaz);
+}
+.tb-card--accent .tb-card__num { color: var(--galben); }
+
+.tb-card h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  text-align: center;
+  margin: auto 0;
+  padding: 8px 0;
+}
+.tb-card--accent h3 { color: var(--bej); }
+
+.tb-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tb-card__list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.97rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.tb-card--accent .tb-card__list li { color: var(--bej); }
+.tb-card__list li::before {
+  content: "—";
+  position: absolute;
+  left: 0; top: 0;
+  font-family: var(--display);
+  color: var(--turcoaz);
+}
+.tb-card--accent .tb-card__list li::before { color: var(--galben); }
+
+@media (max-width: 1080px) {
+  .tb-cards { grid-template-columns: 1fr; gap: 14px; }
+  .tb-card { min-height: auto; }
+}
+
 /* ---------- Teambuilding ---------- */
 .tb {
   background: var(--bej-2);
@@ -1592,6 +1955,7 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
   font-size: clamp(2.6rem, 6vw, 5rem);
   color: var(--bej);
 }
+.cta-strip h2.cta-strip__tagline em {color: var(--rosu); }
 .cta-strip h2 em { color: var(--galben); }
 .cta-strip p {
   max-width: 540px;
@@ -1908,11 +2272,29 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
   color: var(--ink);
   border: 1px solid var(--bej);
   box-shadow: 0 30px 60px -20px rgba(237, 185, 100, 0.35);
+  position: relative;
+}
+.pricing-card__badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--rosu);
+  color: var(--bej);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px -8px rgba(237, 119, 110, 0.6);
 }
 .pricing-card--featured:hover { background: var(--bej); border-color: var(--galben); }
 .pricing-card--featured .pricing-card__tag { background: var(--galben); color: var(--ink); }
 .pricing-card--featured .pricing-card__lede { color: var(--ink-soft); }
-.pricing-card--featured .ticks li::before { color: var(--rosu); }
+.pricing-card--featured .ticks li::before { color: var(--turcoaz); }
 
 .pricing-card__tag {
   align-self: flex-start;
@@ -1938,9 +2320,10 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
 }
 .pricing-card__price span {
   font-size: 0.92rem;
-  opacity: 0.65;
+  opacity: 0.78;
 }
-.pricing-card__lede { font-size: 0.96rem; opacity: 0.85; min-height: 2.8em; }
+.pricing-card__lede { font-size: 0.96rem; opacity: 0.92; min-height: 2.8em; }
+.pricing-card--featured .pricing-card__price span { opacity: 1; color: var(--ink-soft); }
 .pricing-card .ticks { display: flex; flex-direction: column; gap: 10px; }
 .pricing-card .ticks li {
   position: relative;
@@ -1955,6 +2338,26 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
   color: var(--galben);
 }
 .pricing-card__cta { margin-top: auto; align-self: stretch; justify-content: center; }
+.pricing-card .btn--outline {
+  background: transparent;
+  color: var(--bej);
+  border: 1.5px solid var(--galben);
+}
+.pricing-card .btn--outline:hover {
+  background: var(--galben);
+  color: var(--ink);
+  border-color: var(--galben);
+}
+.pricing-card--featured .btn--outline {
+  background: var(--ink);
+  color: var(--bej);
+  border-color: var(--ink);
+}
+.pricing-card--featured .btn--outline:hover {
+  background: var(--turcoaz);
+  color: var(--bej);
+  border-color: var(--turcoaz);
+}
 
 /* ---------- Floating sticky CTA bar (mobile) ---------- */
 .float-cta {
