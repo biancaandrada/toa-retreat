@@ -187,17 +187,69 @@ if (heroVideo) {
   mq.addEventListener?.("change", apply);
 }
 
-// ---------- Form: simple mailto fallback ----------
+// ---------- Forms: Brevo backend (with mailto fallback) ----------
+const TOA_API_BASE = (window.TOA_API_BASE || "").replace(/\/$/, "");
+
 document.querySelectorAll("form[data-form]").forEach((form) => {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const subject = encodeURIComponent(form.dataset.subject || "Mesaj de pe site TOA Retreat");
-    const body = encodeURIComponent(
-      Array.from(data.entries())
-        .map(([k, v]) => `${k}: ${v}`)
-        .join("\n")
-    );
-    window.location.href = `mailto:toaretreat@gmail.com?subject=${subject}&body=${body}`;
+    const submit = form.querySelector('button[type="submit"], input[type="submit"]');
+    const originalLabel = submit?.innerHTML;
+    if (submit) {
+      submit.disabled = true;
+      submit.dataset.originalLabel = originalLabel;
+      submit.innerHTML = "<span>Se trimite…</span>";
+    }
+
+    const entries = Array.from(new FormData(form).entries());
+    const data = Object.fromEntries(entries);
+    const subject = form.dataset.subject || "Mesaj de pe site TOA Retreat";
+    const isNewsletter =
+      form.classList.contains("newsletter__form") ||
+      form.classList.contains("footer__newsletter") ||
+      (entries.length <= 2 && "Email" in data && !("Mesaj" in data) && !("Nume" in data));
+
+    const endpoint = isNewsletter ? "/api/newsletter" : "/api/contact";
+    const body = isNewsletter ? { email: data.Email, ...stripKnown(data) } : { subject, ...data };
+
+    try {
+      const res = await fetch(TOA_API_BASE + endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      showFormSuccess(form, isNewsletter);
+    } catch (err) {
+      console.warn("Form submit failed, falling back to mailto:", err);
+      mailtoFallback(subject, entries);
+      if (submit) {
+        submit.disabled = false;
+        submit.innerHTML = submit.dataset.originalLabel || originalLabel;
+      }
+    }
   });
 });
+
+function stripKnown(obj) {
+  const { Email, ...rest } = obj;
+  return rest;
+}
+
+function showFormSuccess(form, isNewsletter) {
+  const msg = isNewsletter
+    ? "Mulțumim! Te-am adăugat la newsletter."
+    : "Mulțumim! Revenim cu un răspuns în maximum 24 de ore.";
+  const note = document.createElement("p");
+  note.className = "form__success";
+  note.textContent = msg;
+  note.style.cssText =
+    "padding:14px 18px;border-radius:14px;background:rgba(94,170,165,0.18);color:inherit;margin-top:14px;font-size:0.95rem;";
+  form.replaceChildren(note);
+}
+
+function mailtoFallback(subject, entries) {
+  const body = encodeURIComponent(entries.map(([k, v]) => `${k}: ${v}`).join("\n"));
+  window.location.href = `mailto:toaretreat@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
