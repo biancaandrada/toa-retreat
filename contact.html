@@ -154,6 +154,34 @@
 
   <div id="footer-mount"></div>
 
-  <script src="script.js?v=2026-05-06c" defer></script>
+  <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwS1ZgBaIOpsOJhaYdtlomHHOZmGsXLXV59uUwtdS4esMufzdoGHxAtwKf1_k-y4fCb/exec";
+
+      document.querySelector("#contactForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const data = {
+          formType: "contact",
+          name: form.name.value,
+          email: form.email.value,
+          phone: form.phone.value,
+          subject: form.subject.value,
+          message: form.message.value,
+          gdprConsent: form.gdprConsent.checked,
+          newsletterConsent: false,
+          source: window.location.href
+        };
+
+        await fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify(data)
+        });
+
+        alert("Mesajul a fost trimis.");
+        form.reset();
+      });
+  </script>
 </body>
 </html>
