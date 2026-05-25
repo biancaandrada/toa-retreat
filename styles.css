@@ -2431,9 +2431,8 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   right: 20px;
   z-index: 80;
 }
-.float-cta a {
-  display: none;
-}
+.float-cta__call,
+.float-cta__email { display: none; }
 .float-cta__wa {
   display: inline-flex;
   align-items: center;
