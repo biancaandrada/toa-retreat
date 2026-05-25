@@ -215,54 +215,45 @@
         Completează formularul de mai jos și te contactăm în 24 de ore cu detaliile complete și pasul următor.
       </p>
 
-      <form class="form form-light" data-form data-subject="Înscriere eveniment 31 iulie – 2 august">
+      <form id="signupForm" class="form form-light" data-form data-subject="Înscriere eveniment 31 iulie – 2 august">
         <div class="form__row">
           <div class="form__field">
             <label for="nume">Nume complet</label>
-            <input id="nume" name="Nume" type="text" required placeholder="Andreea Popescu" />
+            <input id="nume" name="name" type="text" required placeholder="Andreea Popescu" />
           </div>
           <div class="form__field">
             <label for="email">Email</label>
-            <input id="email" name="Email" type="email" required placeholder="andreea@email.com" />
+            <input id="email" name="email" type="email" required placeholder="andreea@email.com" />
           </div>
         </div>
         <div class="form__row">
           <div class="form__field">
             <label for="telefon">Telefon</label>
-            <input id="telefon" name="Telefon" type="tel" required inputmode="tel" pattern="\s*(?:0\s*7(?:\s*\d){8}|\+(?:\s*\d){7,}|0\s*0(?:\s*\d){7})\s*" title="Format acceptat: 07 urmat de 8 cifre (total 10), + urmat de minim 7 cifre, sau 00 urmat de 7 cifre (total 9)." placeholder="07XX XXX XXX" />
+            <input id="telefon" name="phone" type="tel" required inputmode="tel" pattern="\s*(?:0\s*7(?:\s*\d){8}|\+(?:\s*\d){7,}|0\s*0(?:\s*\d){7})\s*" title="Format acceptat: 07 urmat de 8 cifre (total 10), + urmat de minim 7 cifre, sau 00 urmat de 7 cifre (total 9)." placeholder="07XX XXX XXX" />
           </div>
           <div class="form__field">
             <label for="locuri">Număr de locuri</label>
-            <select id="locuri" name="Locuri">
+            <select id="locuri" name="seats">
               <option value="1">1 loc</option>
-              <option value="2">2 locuri (cabină dublă)</option>
+              <option value="2">2 locuri</option>
               <option value="3">3+ locuri</option>
             </select>
           </div>
         </div>
         <div class="form__field">
-          <label for="experienta">Experiență de navigație</label>
-          <select id="experienta" name="Experienta">
-            <option>Niciuna — vreau să învăț</option>
-            <option>Începător</option>
-            <option>Intermediar</option>
-            <option>Avansat / certificat</option>
-          </select>
-        </div>
-        <div class="form__field">
           <label for="mesaj">Mesaj sau întrebări (opțional)</label>
-          <textarea id="mesaj" name="Mesaj" placeholder="Restricții alimentare, întrebări despre logistică, orice altceva..."></textarea>
+          <textarea id="mesaj" name="message" placeholder="Restricții alimentare, întrebări despre logistică, orice altceva..."></textarea>
         </div>
         <label class="form__check">
-          <input type="checkbox" required />
+          <input type="checkbox" name="gdprConsent"  required />
           <span>Sunt de acord cu prelucrarea datelor mele de contact pentru a primi detalii despre acest retreat.</span>
         </label>
         <label class="form__check">
-          <input type="checkbox" required />
+          <input type="checkbox" name="privacyConsent" required />
           <span>Am citit și sunt de acord cu <a href="gdpr.html" target="_blank" rel="noopener">Politica de Confidențialitate</a>.</span>
         </label>
         <label class="form__check">
-          <input type="checkbox" name="Newsletter" />
+          <input type="checkbox" name="newsletterConsent" />
           <span>Sunt de acord să mă abonez la newsletterul TOA Retreat.</span>
         </label>
         <button type="submit" class="btn btn--primary form__submit" style="background: var(--galben); color: var(--ink);">
@@ -288,5 +279,41 @@
   <div id="footer-mount"></div>
 
   <script src="script.js?v=2026-05-06c" defer></script>
+  <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwS1ZgBaIOpsOJhaYdtlomHHOZmGsXLXV59uUwtdS4esMufzdoGHxAtwKf1_k-y4fCb/exec";
+
+      document.querySelector("#signupForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const data = {
+          formType: "inscriere_retreat",
+          name: form.name.value,
+          email: form.email.value,
+          phone: form.phone.value,
+          seats: form.seats.value,
+          experience: form.experience.value,
+          message: form.message.value,
+          gdprConsent: form.gdprConsent.checked,
+          newsletterConsent: form.newsletterConsent.checked,
+          source: window.location.href
+        };
+
+        try {
+          await fetch(scriptURL, {
+            method: "POST",
+            body: JSON.stringify(data)
+          });
+
+          alert("Înscrierea a fost trimisă.");
+          form.reset();
+
+        } catch (error) {
+          alert("Eroare la trimitere.");
+          console.error(error);
+        }
+      });
+  </script>
 </body>
 </html>
