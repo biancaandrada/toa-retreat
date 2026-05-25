@@ -2071,6 +2071,46 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
 .form-light .form__check a:hover { color: var(--bej); }
 .form__submit { justify-self: start; margin-top: 8px; }
 
+/* Validation error messages */
+.form__error {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--rosu);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+/* Invalid field border — light form */
+.form__field input[aria-invalid],
+.form__field select[aria-invalid],
+.form__field textarea[aria-invalid] {
+  border-color: var(--rosu) !important;
+}
+/* Invalid field border — dark form */
+.form-light .form__field input[aria-invalid],
+.form-light .form__field select[aria-invalid],
+.form-light .form__field textarea[aria-invalid] {
+  border-color: var(--rosu) !important;
+}
+/* Invalid newsletter email */
+.newsletter__row input[aria-invalid],
+.footer__newsletter input[aria-invalid] {
+  border-color: var(--rosu) !important;
+}
+/* Error after newsletter row or checkbox label */
+.newsletter__row + .form__error,
+.newsletter__check + .form__error,
+.footer__newsletter-check + .form__error,
+.form__check + .form__error {
+  margin-top: 6px;
+}
+/* Error color on dark sections */
+.form-light .form__error,
+.newsletter .form__error,
+.footer__brand .form__error {
+  color: #ff8080;
+}
+
 .form-light .form__field input,
 .form-light .form__field select,
 .form-light .form__field textarea {

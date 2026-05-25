@@ -190,6 +190,60 @@ if (heroVideo) {
 // ---------- Form submission → Google Sheets (Apps Script) ----------
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwS1ZgBaIOpsOJhaYdtlomHHOZmGsXLXV59uUwtdS4esMufzdoGHxAtwKf1_k-y4fCb/exec";
 
+// ---------- Custom validation — mesaje în română ----------
+function getRomanianError(field) {
+  const v = field.validity;
+  if (v.valueMissing) {
+    if (field.type === "checkbox") return "Bifează căsuța pentru a putea continua.";
+    if (field.type === "email")    return "Adresa de email este obligatorie.";
+    return "Câmpul este obligatoriu.";
+  }
+  if (v.typeMismatch && field.type === "email") return "Introdu o adresă de email validă (ex: nume@email.com).";
+  if (v.patternMismatch) return field.title || "Formatul introdus nu este valid.";
+  if (v.tooShort) return `Minimum ${field.minLength} caractere.`;
+  if (v.tooLong)  return `Maximum ${field.maxLength} caractere.`;
+  return "Valoare invalidă.";
+}
+
+// Where to anchor the error element (inserted after this element)
+function errorAnchor(field) {
+  if (field.type === "checkbox") return field.closest("label");
+  if (field.parentElement.classList.contains("newsletter__row")) return field.parentElement;
+  return field;
+}
+
+function clearFieldError(field) {
+  field.removeAttribute("aria-invalid");
+  const next = errorAnchor(field).nextElementSibling;
+  if (next && next.classList.contains("form__error")) next.remove();
+}
+
+function showFieldError(field, msg) {
+  clearFieldError(field);
+  const el = document.createElement("span");
+  el.className = "form__error";
+  el.setAttribute("role", "alert");
+  el.textContent = msg;
+  errorAnchor(field).insertAdjacentElement("afterend", el);
+  field.setAttribute("aria-invalid", "true");
+}
+
+function validateField(field) {
+  if (field.checkValidity()) { clearFieldError(field); return true; }
+  showFieldError(field, getRomanianError(field));
+  return false;
+}
+
+function setupFormValidation(form) {
+  form.setAttribute("novalidate", "");
+  form.querySelectorAll("input, textarea, select").forEach((field) => {
+    field.addEventListener("blur", () => validateField(field));
+    // Re-validate live only after the user has already seen an error
+    field.addEventListener("input",  () => { if (field.hasAttribute("aria-invalid")) validateField(field); });
+    field.addEventListener("change", () => { if (field.hasAttribute("aria-invalid")) validateField(field); });
+  });
+}
+
 function showFormFeedback(form, success) {
   const btn = form.querySelector("[type=submit]");
   const original = btn ? btn.innerHTML : null;
@@ -206,8 +260,20 @@ function showFormFeedback(form, success) {
 }
 
 document.querySelectorAll("form[data-form]").forEach((form) => {
+  setupFormValidation(form);
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Validate all fields; focus first invalid one
+    let allValid = true;
+    form.querySelectorAll("input, textarea, select").forEach((f) => {
+      if (!validateField(f)) allValid = false;
+    });
+    if (!allValid) {
+      form.querySelector("[aria-invalid]")?.focus();
+      return;
+    }
 
     // Build payload from all form fields
     const payload = { source: window.location.href };
