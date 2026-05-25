@@ -2427,30 +2427,26 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
 .float-cta {
   display: none;
   position: fixed;
-  bottom: 14px;
-  left: 14px;
-  right: 14px;
+  bottom: 20px;
+  right: 20px;
   z-index: 80;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 999px;
-  background: rgba(3, 25, 40, 0.92);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--shadow-deep);
 }
 .float-cta a {
-  flex: 1;
+  display: none;
+}
+.float-cta__wa {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 12px 14px;
+  gap: 8px;
+  padding: 14px 28px;
   border-radius: 999px;
-  font-size: 0.86rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   white-space: nowrap;
+  background: var(--whatsapp);
+  color: white;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
 }
-.float-cta__wa { background: var(--whatsapp); color: white; }
 
 /* ---------- Reveal animations ---------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
