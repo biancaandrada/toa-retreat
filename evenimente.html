@@ -278,40 +278,6 @@
 
   <div id="footer-mount"></div>
 
-  <script>
-      const scriptURL = "https://script.google.com/macros/s/AKfycbwS1ZgBaIOpsOJhaYdtlomHHOZmGsXLXV59uUwtdS4esMufzdoGHxAtwKf1_k-y4fCb/exec";
-
-      document.querySelector("#signupForm").addEventListener("submit", async function(e) {
-        e.preventDefault();
-
-        const form = e.target;
-
-        const data = {
-          formType: "inscriere_retreat",
-          name: form.name.value,
-          email: form.email.value,
-          phone: form.phone.value,
-          seats: form.seats.value,
-          message: form.message.value,
-          gdprConsent: form.gdprConsent.checked,
-          newsletterConsent: form.newsletterConsent.checked,
-          source: window.location.href
-        };
-
-        try {
-          await fetch(scriptURL, {
-            method: "POST",
-            body: JSON.stringify(data)
-          });
-
-          alert("Înscrierea a fost trimisă.");
-          form.reset();
-
-        } catch (error) {
-          alert("Eroare la trimitere.");
-          console.error(error);
-        }
-      });
-  </script>
+  <script src="script.js?v=2026-05-25" defer></script>
 </body>
 </html>
