@@ -187,17 +187,58 @@ if (heroVideo) {
   mq.addEventListener?.("change", apply);
 }
 
-// ---------- Form: simple mailto fallback ----------
+// ---------- Form submission → Google Sheets (Apps Script) ----------
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwS1ZgBaIOpsOJhaYdtlomHHOZmGsXLXV59uUwtdS4esMufzdoGHxAtwKf1_k-y4fCb/exec";
+
+function showFormFeedback(form, success) {
+  const btn = form.querySelector("[type=submit]");
+  const original = btn ? btn.innerHTML : null;
+  if (btn) {
+    btn.innerHTML = success
+      ? "<span>✓ Trimis cu succes</span>"
+      : "<span>✗ Eroare — încearcă din nou</span>";
+    btn.disabled = true;
+  }
+  setTimeout(() => {
+    if (success) form.reset();
+    if (btn && original) { btn.innerHTML = original; btn.disabled = false; }
+  }, 3000);
+}
+
 document.querySelectorAll("form[data-form]").forEach((form) => {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const subject = encodeURIComponent(form.dataset.subject || "Mesaj de pe site TOA Retreat");
-    const body = encodeURIComponent(
-      Array.from(data.entries())
-        .map(([k, v]) => `${k}: ${v}`)
-        .join("\n")
-    );
-    window.location.href = `mailto:toaretreat@gmail.com?subject=${subject}&body=${body}`;
+
+    // Build payload from all form fields
+    const payload = { source: window.location.href };
+    new FormData(form).forEach((value, key) => {
+      payload[key] = value === "on" ? true : value;
+    });
+
+    // Determine formType
+    const isNewsletter =
+      form.classList.contains("newsletter__form") ||
+      form.classList.contains("footer__newsletter");
+
+    if (isNewsletter) {
+      payload.formType = "newsletter";
+    } else if (form.id === "contactForm") {
+      payload.formType = "contact";
+    } else if (form.id === "signupForm") {
+      payload.formType = "inscriere_retreat";
+    } else {
+      payload.formType = form.dataset.subject || "mesaj";
+    }
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(payload),
+      });
+      showFormFeedback(form, true);
+    } catch (err) {
+      console.error("[form]", err);
+      showFormFeedback(form, false);
+    }
   });
 });
