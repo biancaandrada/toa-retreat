@@ -42,7 +42,7 @@ if (footerMount) {
           <img src="assets/logo/TOA_LogoFull_Color_Negativ.svg" alt="TOA Retreat" />
           <p>Time Off &amp; Awareness — sporturi atipice îmbinate cu dezvoltare personală, în locații exclusiviste.</p>
           <form class="footer__newsletter" data-form data-subject="Newsletter — abonare (footer)">
-            <input type="email" name="Email" required placeholder="email@example.com" aria-label="Email" />
+            <input type="email" name="email" required placeholder="name@email.com" aria-label="Email" />
             <button type="submit" class="footer__newsletter-submit">
               <span>Abonează-mă</span>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
