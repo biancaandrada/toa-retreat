@@ -84,25 +84,25 @@
         Completează câmpurile de mai jos și revenim cu un răspuns. Pentru cele mai rapide răspunsuri, folosește WhatsApp-ul de mai sus.
       </p>
 
-      <form class="form" data-form data-subject="Mesaj de pe site TOA Retreat">
+      <form id="contactForm" class="form" data-form data-subject="Mesaj de pe site TOA Retreat">
         <div class="form__row">
           <div class="form__field">
             <label for="cnume">Nume</label>
-            <input id="cnume" name="Nume" type="text" required placeholder="Andreea Popescu" />
+            <input id="cnume" name="name" type="text" required placeholder="Andreea Popescu" />
           </div>
           <div class="form__field">
             <label for="cemail">Email</label>
-            <input id="cemail" name="Email" type="email" required placeholder="andreea@email.com" />
+            <input id="cemail" name="email" type="email" required placeholder="andreea@email.com" />
           </div>
         </div>
         <div class="form__row">
           <div class="form__field">
             <label for="ctelefon">Telefon (opțional)</label>
-            <input id="ctelefon" name="Telefon" type="tel" inputmode="tel" pattern="\s*(?:0\s*7(?:\s*\d){8}|\+(?:\s*\d){7,}|0\s*0(?:\s*\d){7})\s*" title="Format acceptat: 07 urmat de 8 cifre (total 10), + urmat de minim 7 cifre, sau 00 urmat de 7 cifre (total 9)." placeholder="07XX XXX XXX" />
+            <input id="ctelefon" name="phone" type="tel" inputmode="tel" pattern="\s*(?:0\s*7(?:\s*\d){8}|\+(?:\s*\d){7,}|0\s*0(?:\s*\d){7})\s*" title="Format acceptat: 07 urmat de 8 cifre (total 10), + urmat de minim 7 cifre, sau 00 urmat de 7 cifre (total 9)." placeholder="07XX XXX XXX" />
           </div>
           <div class="form__field">
             <label for="ctip">Subiect</label>
-            <select id="ctip" name="Subiect">
+            <select id="ctip" name="subject">
               <option>Eveniment 31 iulie – 2 august</option>
               <option>Teambuilding pentru companie</option>
               <option>Worldwide charter</option>
@@ -113,10 +113,10 @@
         </div>
         <div class="form__field">
           <label for="cmesaj">Mesaj</label>
-          <textarea id="cmesaj" name="Mesaj" required placeholder="Spune-ne ce ai în minte..."></textarea>
+          <textarea id="cmesaj" name="message" required placeholder="Spune-ne ce ai în minte..."></textarea>
         </div>
         <label class="form__check">
-          <input type="checkbox" required />
+          <input type="checkbox" name="gdprConsent" required />
           <span>Sunt de acord cu prelucrarea datelor mele de contact pentru a primi un răspuns.</span>
         </label>
         <button type="submit" class="btn btn--primary form__submit">
