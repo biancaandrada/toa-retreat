@@ -2450,8 +2450,6 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   white-space: nowrap;
 }
 .float-cta__wa { background: var(--whatsapp); color: white; }
-.float-cta__call { background: var(--galben); color: var(--ink); }
-.float-cta__email { background: rgba(253, 249, 237, 0.08); color: var(--bej); border: 1px solid rgba(253, 249, 237, 0.18); }
 .float-cta a svg { width: 16px; height: 16px; }
 
 /* ---------- Reveal animations ---------- */
