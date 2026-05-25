@@ -2217,6 +2217,29 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   transition: color var(--t-fast);
 }
 .footer__newsletter-note a:hover { color: var(--bej); }
+.footer__newsletter-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+  max-width: 360px;
+  font-size: 0.78rem;
+  color: rgba(253, 249, 237, 0.5);
+  line-height: 1.5;
+  cursor: pointer;
+}
+.footer__newsletter-check input[type="checkbox"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--galben);
+}
+.footer__newsletter-check a {
+  color: var(--galben);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--t-fast);
+}
+.footer__newsletter-check a:hover { color: var(--bej); }
 .footer__cols {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
