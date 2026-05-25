@@ -231,8 +231,11 @@ document.querySelectorAll("form[data-form]").forEach((form) => {
     }
 
     try {
+      // mode: 'no-cors' is required for Google Apps Script — the response is
+      // opaque but the script receives the data correctly.
       await fetch(SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         body: JSON.stringify(payload),
       });
       showFormFeedback(form, true);
