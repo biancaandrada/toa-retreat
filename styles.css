@@ -16,6 +16,7 @@
 
 /* ---------- Tokens ---------- */
 :root {
+  color-scheme: only light;
   --turcoaz: #5eaaa5;
   --galben:  #edb964;
   --rosu:    #ed776e;
@@ -2450,7 +2451,6 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   white-space: nowrap;
 }
 .float-cta__wa { background: var(--whatsapp); color: white; }
-.float-cta a svg { width: 16px; height: 16px; }
 
 /* ---------- Reveal animations ---------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
