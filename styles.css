@@ -127,6 +127,26 @@ ul { list-style: none; }
 }
 .btn--primary:hover { background: var(--turcoaz); color: var(--bej); }
 
+/* Yellow CTA — used on dark section buttons */
+.btn--yellow {
+  background: var(--galben);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+}
+.btn--yellow:hover { background: var(--bej); color: var(--ink); }
+
+/* details/summary — charter FAQ */
+summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+}
+summary:focus-visible {
+  outline: 2px solid var(--turcoaz);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .btn--ghost {
   background: transparent;
   color: var(--bej);
@@ -1237,7 +1257,14 @@ section { padding: var(--pad-y) var(--pad); position: relative; }
 .newsletter__form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
+}
+.newsletter__label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 .newsletter__row {
   display: flex;
@@ -2040,7 +2067,7 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
 .form__field select,
 .form__field textarea {
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: 16px; /* explicit 16px previne zoom automat pe iOS */
   padding: 14px 16px;
   border-radius: 12px;
   border: 1px solid var(--line);
@@ -2065,7 +2092,14 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   color: var(--ink-soft);
   line-height: 1.5;
 }
-.form__check input { margin-top: 4px; accent-color: var(--turcoaz); }
+.form__check input {
+  margin-top: 2px;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--turcoaz);
+}
 .form__check a { color: var(--turcoaz); text-decoration: underline; text-underline-offset: 3px; transition: color var(--t-fast); }
 .form__check a:hover { color: var(--ink); }
 .form-light .form__check a { color: var(--galben); }
@@ -2075,7 +2109,7 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
 /* Validation error messages */
 .form__error {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--rosu);
   margin-top: 5px;
