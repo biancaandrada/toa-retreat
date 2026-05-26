@@ -1852,7 +1852,7 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   object-position: center 40%;
 }
 .collab__text { max-width: 560px; }
-.collab__text .eyebrow { margin-bottom: 24px; display: inline-block; }
+.collab__text .eyebrow { margin-bottom: 20px; display: inline-block; }
 .collab__text .display em { color: var(--turcoaz); }
 .collab__text p {
   margin-top: 24px;
@@ -2601,6 +2601,7 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   min-height: 60vh;
   max-height: 78vh;
   align-items: stretch;
+  overflow: hidden;
 }
 .event-hero__panel {
   display: flex;
@@ -2661,7 +2662,7 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
 .event-hero__cover {
   position: relative;
   overflow: hidden;
-  background: var(--bej);
+  background: var(--bej-2);
 }
 .event-hero__cover img {
   position: absolute;
@@ -2669,6 +2670,7 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center center;
   display: block;
 }
 
@@ -2720,12 +2722,9 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   }
   .event-day:last-child { border-bottom: none; }
 }
-@media (max-width: 1080px) {
-  .event-hero__cover img { object-fit: contain; }
-}
 @media (max-width: 600px) {
   .event-hero__panel { padding: 48px 22px; }
-  .event-hero__cover { aspect-ratio: 4/3; }
+  .event-hero__cover { aspect-ratio: 3/2; }
 }
 
 /* Founders section */
