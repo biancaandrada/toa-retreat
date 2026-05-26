@@ -329,3 +329,73 @@ document.querySelectorAll("form[data-form]").forEach((form) => {
     }
   });
 });
+
+// ---------- Cookie consent ----------
+const COOKIE_KEY = "toa_cookie_consent";
+
+function setCookieConsent(value) {
+  // Save for 365 days via both localStorage (fast) and a real cookie (cross-tab)
+  try { localStorage.setItem(COOKIE_KEY, value); } catch (_) {}
+  const expires = new Date(Date.now() + 365 * 864e5).toUTCString();
+  document.cookie = `${COOKIE_KEY}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+}
+
+function getCookieConsent() {
+  try {
+    const ls = localStorage.getItem(COOKIE_KEY);
+    if (ls) return ls;
+  } catch (_) {}
+  const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${COOKIE_KEY}=([^;]+)`));
+  return match ? match[1] : null;
+}
+
+function buildCookieBanner() {
+  const banner = document.createElement("div");
+  banner.className = "cookie-banner";
+  banner.id = "cookieBanner";
+  banner.setAttribute("role", "dialog");
+  banner.setAttribute("aria-label", "Consimțământ cookie-uri");
+  banner.setAttribute("aria-modal", "true");
+  banner.innerHTML = `
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__text">
+        <strong>Folosim cookie-uri</strong>
+        <p>
+          Folosim cookie-uri esențiale pentru funcționarea site-ului și, cu acordul tău,
+          cookie-uri de analiză pentru a înțelege cum este utilizat.
+          Poți oricând să îți retragi consimțământul.
+          <a href="gdpr.html">Politică de Confidențialitate</a>
+        </p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="btn btn--ghost" id="cookieEssential">Doar esențiale</button>
+        <button class="btn btn--primary" id="cookieAccept">Acceptă toate</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  // Animate in after a short delay (lets page paint first)
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => banner.classList.add("is-visible"));
+  });
+
+  function dismiss(value) {
+    setCookieConsent(value);
+    banner.classList.remove("is-visible");
+    banner.addEventListener("transitionend", () => banner.remove(), { once: true });
+  }
+
+  document.getElementById("cookieAccept").addEventListener("click", () => dismiss("all"));
+  document.getElementById("cookieEssential").addEventListener("click", () => dismiss("essential"));
+}
+
+// Show banner only if no consent recorded yet
+if (!getCookieConsent()) {
+  // Wait until DOM is ready / after nav is injected
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", buildCookieBanner);
+  } else {
+    buildCookieBanner();
+  }
+}
