@@ -12,6 +12,17 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  /* acoperă tot alfabetul EXCEPT ț/Ț */
+  unicode-range: U+0000-0219, U+021C-10FFFF;
+}
+/* Fallback Caveat strict pentru ț (U+021A = Ț, U+021B = ț) */
+@font-face {
+  font-family: "Architects Daughter";
+  src: url("assets/fonts/Caveat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+021A-021B;
 }
 
 /* ---------- Tokens ---------- */
@@ -1825,6 +1836,16 @@ body[data-page="tb"] .charter__item p { color: var(--ink-soft); }
   gap: 24px;
   position: relative;
   z-index: 2;
+}
+/* 4-column variant — teambuilding Valoare section */
+.charter__grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 900px) {
+  .charter__grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .charter__grid--4 { grid-template-columns: 1fr; }
 }
 .charter__item {
   padding: 36px 32px;
