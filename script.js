@@ -1,11 +1,12 @@
 // ---------- Shared nav + footer injection ----------
 const PAGE = document.body.dataset.page || "home";
 const PAGES = [
-  { key: "home",   href: "index.html",        label: "Acasă" },
-  { key: "despre", href: "despre.html",       label: "Despre" },
-  { key: "event",  href: "evenimente.html",    label: "Evenimente" },
-  { key: "tb",     href: "teambuilding.html", label: "Teambuilding" },
-  { key: "charter",href: "charter.html",      label: "Worldwide charter" },
+  { key: "home",    href: "index.html",        label: "Acasă" },
+  { key: "despre",  href: "despre.html",       label: "Despre" },
+  { key: "event",   href: "evenimente.html",   label: "Evenimente" },
+  { key: "tb",      href: "teambuilding.html", label: "Teambuilding" },
+  { key: "charter", href: "charter.html",      label: "Worldwide charter" },
+  { key: "contact", href: "contact.html",      label: "Contact" },
 ];
 
 const navMount = document.getElementById("nav-mount");
@@ -18,17 +19,12 @@ if (navMount) {
       <nav class="nav__menu" aria-label="Meniu principal">
         ${PAGES.map(p => `<a href="${p.href}" class="${p.key === PAGE ? "is-active" : ""}">${p.label}</a>`).join("")}
       </nav>
-      <a class="nav__cta" href="contact.html">
-        <span>Contact</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
       <button class="nav__burger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span>
       </button>
     </header>
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       ${PAGES.map(p => `<a href="${p.href}" class="${p.key === PAGE ? "is-active" : ""}">${p.label}</a>`).join("")}
-      <a href="contact.html" class="mobile-menu__cta">Contact</a>
     </div>
   `;
 }
@@ -54,7 +50,6 @@ if (footerMount) {
           <div>
             <span>Site</span>
             ${PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join("")}
-            <a href="contact.html">Contact</a>
           </div>
           <div>
             <span>Contact</span>
@@ -108,7 +103,16 @@ onScroll();
 // ---------- Mobile menu ----------
 const burger = document.querySelector(".nav__burger");
 const mobile = document.getElementById("mobileMenu");
+
+function closeMobileMenu() {
+  burger.setAttribute("aria-expanded", "false");
+  mobile.classList.remove("is-open");
+  mobile.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
 if (burger && mobile) {
+  // Open / close toggle
   burger.addEventListener("click", () => {
     const open = burger.getAttribute("aria-expanded") === "true";
     burger.setAttribute("aria-expanded", String(!open));
@@ -116,14 +120,28 @@ if (burger && mobile) {
     mobile.setAttribute("aria-hidden", String(open));
     document.body.style.overflow = !open ? "hidden" : "";
   });
-  mobile.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      burger.setAttribute("aria-expanded", "false");
-      mobile.classList.remove("is-open");
-      mobile.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    })
-  );
+
+  // Close on any link click inside menu (covers anchor + page links)
+  mobile.addEventListener("click", (e) => {
+    if (e.target.closest("a")) closeMobileMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && burger.getAttribute("aria-expanded") === "true") {
+      closeMobileMenu();
+      burger.focus();
+    }
+  });
+
+  // Close on click outside menu and burger
+  document.addEventListener("click", (e) => {
+    if (
+      burger.getAttribute("aria-expanded") === "true" &&
+      !mobile.contains(e.target) &&
+      !burger.contains(e.target)
+    ) closeMobileMenu();
+  });
 }
 
 // ---------- Reveal on scroll ----------
