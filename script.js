@@ -40,7 +40,7 @@ if (footerMount) {
           <form class="footer__newsletter" data-form data-subject="Newsletter — abonare (footer)">
             <input type="email" name="email" required placeholder="name@email.com" aria-label="Email" />
             <button type="submit" class="footer__newsletter-submit">
-              <span>Abonează-mă</span>
+              <span>Abonează-te</span>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </form>
@@ -329,6 +329,42 @@ document.querySelectorAll("form[data-form]").forEach((form) => {
     }
   });
 });
+
+// ---------- Pre-fill contact form from URL params ----------
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const subject = params.get("subject");
+  const message = params.get("message");
+  if (!subject && !message) return;
+
+  function applyParams() {
+    if (subject) {
+      const select = document.getElementById("ctip");
+      if (select) {
+        // Find matching option (case-insensitive)
+        const opt = Array.from(select.options).find(
+          o => o.value.toLowerCase() === subject.toLowerCase() ||
+               o.text.toLowerCase() === subject.toLowerCase()
+        );
+        if (opt) select.value = opt.value;
+      }
+    }
+    if (message) {
+      const textarea = document.getElementById("cmesaj");
+      if (textarea) textarea.value = message;
+    }
+    // Scroll smoothly to form
+    const form = document.getElementById("contactForm");
+    if (form) setTimeout(() => form.scrollIntoView({ behavior: "smooth", block: "center" }), 300);
+  }
+
+  // Run after nav/footer are injected (script runs deferred, DOM is ready)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applyParams);
+  } else {
+    applyParams();
+  }
+})();
 
 // ---------- Cookie consent ----------
 const COOKIE_KEY = "toa_cookie_consent";
